@@ -57,7 +57,19 @@ Karakterin en başta sabit ve ‘10’ olan bu canına; yağ, su, petrol birikin
 * 30x15 boyutunda harita oluşturuldu
 * Odalar rastgele üretildi
 * En uzak oda çıkış noktası olarak seçildi
-  
+
+## Savaş Sistemi
+* Zar atma mekanizması ile çatışma
+* Tuzaklarda sabit hedef değeri
+* Gardiyanlarda karşılıklı zar sistemi
+* Can sistemi ve hasar hesaplama
+
+## Grafik ve Atmosfer
+* Pixel-art tarzı görseller
+* Dinamik sis efekti
+* Animasyonlu zar sistemi
+* Adım, hasar ve zafer ses efektleri
+
 ## Ekibimiz
 * İsmail Emre Taşbilek
 * Merve Nur Sayın
