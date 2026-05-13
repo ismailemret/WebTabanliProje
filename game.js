@@ -193,7 +193,7 @@ function placeEnemies() {
         // Kısıt: Oyuncunun başlangıç noktasında veya çıkış kapısında düşman oluşamaz
         if ((room.x === player.x && room.y === player.y) || 
             (room.x === exitRoom.x && room.y === exitRoom.y)) return;
-		
+        
         // Yatay veya dikey dar geçitleri kontrol edip gardiyanların sadece tekli koridorlara yerleştrilmesini sağlar
         let isHorizontalCorridor = (map[room.y][room.x - 1] === 0 && map[room.y][room.x + 1] === 0);
         let isVerticalCorridor = (map[room.y - 1] && map[room.y - 1][room.x] === 0 && map[room.y + 1] && map[room.y + 1][room.x] === 0);
@@ -223,19 +223,21 @@ function placeEnemies() {
                     hp: guardHP,    // Mevcut can
                     maxHp: guardHP  // UI üzerinde can barı gösterimi için referans değer
                 });
-                return;
+                return; 
             }
         }
-    });
         
+        // Eğer gardiyan yerleşmediyse tuzak ihtimalini kontrol et
         if (Math.random() > 0.94) {
             enemies.push({ 
-                x: room.x, y: room.y, 
+                x: room.x, 
+                y: room.y, 
                 type: Math.floor(Math.random() * 3),
                 hp: 1 // Tuzaklar tek vuruşluktur
             });
         }
     });
+}
 
 // 3. Çizim Fonksiyonları
 function draw() {
