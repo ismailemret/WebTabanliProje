@@ -7,42 +7,47 @@
 </head>
 <body>
 
-<h1> ⚔️ Dungeon Inferno </h1>
+<h1>🧩 Dungeon Dice</h1>
 
+<!-- Zar ekranı -->
 <div id="diceScreen" class="hidden">
-  <h2 id="battleHeader">⚠️ GARDİYANLA SAVAŞ</h2>
+  <h2>Zar Savaşı</h2>
   <div id="diceArea">
-    <div class="dice-wrapper">
-      <span>OYUNCU</span>
-      <div id="playerDice" class="dice">?</div>
-    </div>
-    <div class="vs">VS</div>
-    <div class="dice-wrapper">
-      <span>Gardiyan</span>
-      <div id="enemyDice" class="dice">?</div>
-    </div>
+    <div id="playerDice" class="dice">?</div>
+    <div id="enemyDice" class="dice">?</div>
   </div>
-  <p id="battleStatus">Zar atarak kurtulmaya çalış!</p>
-  <button id="rollBtn" onclick="rollDice()">🎲 Zar At</button>
+  <p id="battleInfo">Düşmanla karşılaştın!</p>
+  <button onclick="rollDice()">🎲 Zar At</button>
 </div>
 
 <div id="gameContainer">
-  <canvas id="gameCanvas" width="1200" height="600"></canvas>
+  <canvas id="gameCanvas" width="490" height="490"></canvas>
 </div>
+
+
 
 <div id="statusBoard">
-  ❤️ <span id="hpValue">10</span>
+      <img src="c:\Users\MERVE\OneDrive\Desktop\dice_dungeon_game\Adsız.png" id="heartIcon">  
+ <span id="hpValue">10</span> / 10
+  <div id="hpBarContainer">
+    <div id="hpBar"></div>
+  </div>
 </div>
 
 
-<audio id="soundDefeat" src="defeat.mp3"></audio>
-<audio id="loopMusic" src="loopMusic.mp3" loop preload="auto"></audio>
-<audio id="soundStep" src="taştekli.mp3"></audio>
-<audio id="soundDamage" src="damage.mp3"></audio>
-<audio id="soundEncounter" src="universfield-marimba-lose-250960.mp3"></audio>
-<audio id="soundWin" src="freesound_crunchpixstudio-material-gold-394476.mp3"></audio>
+
+<canvas id="miniMap" width="140" height="140"></canvas>
+
+<!-- Ses elementleri -->
+<audio id="soundEncounter" src="c:\Users\MERVE\OneDrive\Desktop\dice_dungeon_game\universfield-marimba-lose-250960.mp3"></audio>
+<audio id="soundWin" src="c:\Users\MERVE\OneDrive\Desktop\dice_dungeon_game\freesound_crunchpixstudio-material-gold-394476.mp3"></audio>
 <audio id="soundVictoryAll" src="victory_all.mp3"></audio>
 
 <script src="game.js"></script>
+
+
 </body>
 </html>
+
+
+
