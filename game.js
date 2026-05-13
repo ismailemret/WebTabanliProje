@@ -14,8 +14,8 @@ const tileSize = 40;  // Her oda 40x40 piksel
 // Oda sayısını da alanı dolduracak şekilde artıralım
 let roomCount = 300;   // 450 toplam alanda 300 oda gezilebilir bir zindan yaratır
 
-let map = [];
-let rooms = [];
+let map = [];// Zindan verisini Zemin:1 Duvar:0 şeklinde tutar
+let rooms = [];//Zemin olan karelerin koordinat listesi
 let exitRoom = null;
 let potions = [];
 let enemies = [];
