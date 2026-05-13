@@ -30,10 +30,10 @@ const images = {
     right: new Image()
 };
 
-images.down.src = 'onyeni_karakter.png';
-images.up.src = 'arka3_karakter.png';
-images.left.src = 'solyeni_karakter.png';
-images.right.src = 'sagyeni_karakter.png';
+images.down.src = 'assets/images/onyeni_karakter.png';
+images.up.src = 'assets/images/arka3_karakter.png';
+images.left.src = 'assets/images/solyeni_karakter.png';
+images.right.src = 'assets/images/sagyeni_karakter.png';
 
 //Player nesnesi
 const player = {
@@ -49,15 +49,15 @@ const tileImages = {
     wall: new Image()
 };
 const potionImg = new Image();
-tileImages.floor.src = 'zemin.png';
-tileImages.wall.src = 'duvar.png';
-potionImg.src = 'iksir.png';
+tileImages.floor.src = 'assets/images/zemin.png';
+tileImages.wall.src = 'assets/images/duvar.png';
+potionImg.src = 'assets/images/iksir.png';
 // Düşman (Tuzak ve Gardiyan) Görselleri
 const enemyImages = [new Image(), new Image(), new Image(), new Image()];
-enemyImages[0].src = 'su_birikintisi.png'; // 1. düşman görseli (Su)
-enemyImages[1].src = 'petrol_birikintisi.png'; // 2. düşman görseli (Petrol)
-enemyImages[2].src = 'yag_birikintisi.png'; // 3. düşman görseli (Yağ)
-enemyImages[3].src = 'guardian.png'; // 4. düşman görseli (Gardiyan)
+enemyImages[0].src = 'assets/images/su_birikintisi.png'; // 1. düşman görseli (Su)
+enemyImages[1].src = 'assets/images/petrol_birikintisi.png'; // 2. düşman görseli (Petrol)
+enemyImages[2].src = 'assets/images/yag_birikintisi.png'; // 3. düşman görseli (Yağ)
+enemyImages[3].src = 'assets/images/guardian.png'; // 4. düşman görseli (Gardiyan)
 
 const guardImg = enemyImages[3]; // Kolay erişim için referans
 // Müzik Döngüsü
