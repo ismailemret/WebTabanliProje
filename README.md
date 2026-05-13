@@ -21,8 +21,7 @@ Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve
 
 ## Teknik Detaylar
 * Projenin mimarisi, modüler ve genişletilebilir bir yapıdadır.
-* 
-
+  
 * Render Motoru: draw() fonksiyonu üzerinden Canvas API kullanılarak 60 FPS hedefli çizim döngüsü.
 
 * Harita Algoritması: Zindan, roomCount değişkenine bağlı olarak rastgele koordinatlarda oluşturulan odaların bir veri dizisi (map[]) üzerinde saklanmasıyla yönetilir.
