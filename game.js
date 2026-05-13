@@ -109,12 +109,16 @@ function generateMap() {
         { x: -1, y: 0 }, { x: 1, y: 0 }
     ];
 
-    // Labirent Oluşturma (Backtracking Benzeri)
+    /*Stack Mantığı ile Labirent Örme:
+	stack.length > 0 olduğu sürece algoritma zindanın derinliklerine dallanmaya devam eder.
+	Bu döngü, her adımda yeni bir hücreye gider ve "çıkmaz sokağa" girdiğinde stack'ten geri dönerek 
+	henüz keşfedilmemiş yolları arar. Bu, tüm zindanın birbirine bağlı olmasını sağlar.
+	*/
     while (stack.length > 0) {
-        // En son eklenen odayı al (Stack mantığı koridorları uzatır)
+        // En son eklenen odayı al
         let current = stack[stack.length - 1];
         
-        // Komşu odaları rastgele sırayla kontrol et
+        // Rastgeleliği arttırmak için komşu odaların sırasını her seferinde karıştırır
         let shuffledDirs = directions.sort(() => Math.random() - 0.5);
         let found = false;
 
@@ -134,8 +138,7 @@ function generateMap() {
                     }
                 }
 
-                // Sadece tek bir komşusu varsa (geldiğimiz yer) orayı oda yap
-                // Bu şart oda sayısının 120'ye ulaşmasını engelleyebilir ama labirenti labirent yapar
+                // Eğer herhangi bir odanın tek komşusu varsa yolu tekli devam ettirip labirenti ızgara olmaktan korur
                 if (neighbors <= 1 || Math.random() > 0.8) {
                     map[ny][nx] = 1;
                     rooms.push({ x: nx, y: ny });
@@ -146,12 +149,12 @@ function generateMap() {
             }
         }
 
-        // Eğer gidecek yer yoksa geri dön (backtrack)
+        // Eğer gidecek yer yoksa geri döner 
         if (!found) {
             stack.pop();
         }
         
-        // Maksimum oda sınırını yine de koruyalım
+        // Maksimum oda sınırını korur
         if (rooms.length >= 300) break;
     }
 
@@ -159,7 +162,7 @@ function generateMap() {
     placePotions();
 	placeEnemies();
 }
-//Bitiş noktasını oyuncudan en uzak noktaya at
+//Bitiş noktasını oyuncudan en uzak noktaya atar
 function findFarthestRoom(sx, sy) {
     let maxDist = -1;
     rooms.forEach(room => {
@@ -173,7 +176,7 @@ function findFarthestRoom(sx, sy) {
 function placePotions() {
     potions = [];
     rooms.forEach(room => {
-        // Başlangıç ve bitiş odası hariç odalara %5 ihtimalle iksir koy
+        // Başlangıç ve bitiş odası hariç odalara %5 ihtimalle iksir koyar
         if (Math.random() > 0.95 && 
            (room.x !== player.x || room.y !== player.y) && 
            (room.x !== exitRoom.x || room.y !== exitRoom.y)) {
@@ -224,7 +227,6 @@ function placeEnemies() {
             }
         }
     });
-}
         
         if (Math.random() > 0.94) {
             enemies.push({ 
