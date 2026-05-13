@@ -1,13 +1,11 @@
 
 ## Oyun Ekran Görüntüleri
 
-<p align="center">
-  <img width="350" alt="maze" src="https://github.com/user-attachments/assets/81e44155-3763-4ce3-a7e7-93a4820cdd32" style="margin-right: 10px;" />
-  <img width="500" alt="dice" src="https://github.com/user-attachments/assets/48823592-21ca-461a-a1fd-5ce88928b9b0" />
-</p>
+| Labirent Üretimi ve Savaş Sisi | Zar Tabanlı Savaş Sistemi |
+|:---:|:---:|
+| <img height="300" src="https://github.com/user-attachments/assets/81e44155-3763-4ce3-a7e7-93a4820cdd32" /> | <img height="300" src="https://github.com/user-attachments/assets/48823592-21ca-461a-a1fd-5ce88928b9b0" /> |
 
-> **Not:** Sol tarafta Recursive Backtracking ile üretilmiş labirent ve Savaş Sisi (Fog of War) efekti, sağ tarafta ise gardiyanlarla girilen zar tabanlı savaş ekranı görülmektedir.
-# Dungeon Inferno
+
 Bu proje, HTML5 Canvas ve Vanilla JavaScript kullanılarak geliştirilmiş, prosedürel harita üretimi ve sıra tabanlı (turn-based) savaş mekaniklerine sahip bir 2D Dungeon Crawler oyunudur.
 Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve koordinat tabanlı çarpışma denetimi gibi temel oyun programlama konseptlerini uygulamak amacıyla geliştirilmiştir.
 
