@@ -4,34 +4,61 @@
   <meta charset="UTF-8">
   <title>Dungeon Dice Game</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>🧩 Dungeon Dice</h1>
+<h1> ⚔️ Dungeon Inferno </h1>
 
-<!-- Zar ekranı -->
 <div id="diceScreen" class="hidden">
-  <h2>Zar Savaşı</h2>
+  <h2 id="battleHeader">⚠️ GARDİYANLA SAVAŞ</h2>
   <div id="diceArea">
-    <div id="playerDice" class="dice">?</div>
-    <div id="enemyDice" class="dice">?</div>
+    <div class="dice-wrapper">
+      <span>OYUNCU</span>
+      <div id="playerDice" class="dice">?</div>
+    </div>
+    <div class="vs">VS</div>
+    <div class="dice-wrapper">
+      <span>Gardiyan</span>
+      <div id="enemyDice" class="dice">?</div>
+    </div>
   </div>
-  <p id="battleInfo">Düşmanla karşılaştın!</p>
-  <button onclick="rollDice()">🎲 Zar At</button>
+  <p id="battleStatus">Zar atarak kurtulmaya çalış!</p>
+  <button id="rollBtn" onclick="rollDice()">🎲 Zar At</button>
 </div>
 
 <div id="gameContainer">
-  <canvas id="gameCanvas" width="490" height="490"></canvas>
+  <canvas id="gameCanvas" width="1200" height="600"></canvas>
 </div>
-<div id="healthUI">
-    <img src="adsız.png" id="heartIcon">
-    <span id="hpValue">10</span>
+
+<div id="statusBoard">
+  ❤️ <span id="hpValue">10</span>
 </div>
-<canvas id="miniMap" width="140" height="140"></canvas>
+
+<div id="winScreen" class="hidden">
+  <h2>🏆 TEBRİKLER!</h2>
+  <p>Zindanın derinliklerinden sağ çıkmayı başardın!</p>
+  <button onclick="location.reload()">🔄 Tekrar Oyna</button>
+</div>
+
+
+<div id="loseScreen" class="hidden">
+  <h2>💀 OYUN BİTTİ</h2>
+  <p>Zindanın karanlığında kayboldun...</p>
+  <button onclick="location.reload()">🔄 Yeniden Dene</button>
+</div>
+
+<audio id="soundVictoryLoop" src="victory_music.mp3" loop></audio>
+<audio id="soundDiceShaking" src="dice_roll.mp3" loop></audio>
+<audio id="soundSuccess" src="success.mp3"></audio>
+<audio id="soundPotion" src="potion.mp3"></audio>
+<audio id="soundDefeat" src="defeat.mp3"></audio>
+<audio id="loopMusic" src="loopMusic.mp3" loop preload="auto"></audio>
+<audio id="soundStep" src="taştekli.mp3"></audio>
+<audio id="soundDamage" src="damage.mp3"></audio>
+<audio id="soundEncounter" src="universfield-marimba-lose-250960.mp3"></audio>
+<audio id="soundWin" src="freesound_crunchpixstudio-material-gold-394476.mp3"></audio>
+<audio id="soundVictoryAll" src="victory_all.mp3"></audio>
+
 <script src="game.js"></script>
-
-
 </body>
 </html>
-
