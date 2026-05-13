@@ -14,6 +14,13 @@ Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve
 Karakteri bloklar üzerinde, karanlık ve sadece kendi bulunduğu bloğun çevresini görebileceği şekilde adım adım ilerletilerek labirent şeklindeki zindandan çıkarmak yani çıkış bloğuna varmak amaçlanır.
 Karakter bu labirentte ilerlerken çeşitli tuzaklarla karşılaşır.
 
+# Kullanılan Teknolojiler
+HTML5 Canvas
+CSS
+JavaScript
+Ses efektleri ve müzik yönetimi
+Sprite (Görsel dosya) tabanlı karakter sistemi
+
 ## Temel Özellikler
 * Prosedürel Zindan Üretimi: generateMap() fonksiyonu, her oyun başında benzersiz odalar ve koridorlar inşa eder.
 
