@@ -29,6 +29,21 @@ Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve
 ## Oynanış
 * Karakter ok tuşlarıyla hareket eder.
 * Bir zindanın ortasında başlar ve labirentte engelleri aşarak çıkışa ulaşmaya çalışır.
+* Oyunu önden inceleyebilmek için "https://ismailemret.github.io/DungeonInferno/" sitesine gidebilirsiniz.
 ### Ekibimiz
 * İsmail Emre Taşbilek
 * Merve Nur Sayın
+### Kaynakça
+Harita yapımında kullanılan görseller için:
+** Shutterstock. (t.y.). Pixelated wall stone illustrations. Shutterstock. https://www.shutterstock.com/tr/search/pixelated-wall-stone?image_type=illustration
+Karakter oluşumunda kullanılan görsel için:
+** Reddit kullanıcısı r/PixelArt. (t.y.). 16x16 topdown character sprite [Reddit gönderisi]. Reddit. https://www.reddit.com/r/PixelArt/comments/1krxwzk/16x16_topdown_character_sprite/https://
+* W3Schools. (t.y.). HTML canvas introduction. W3Schools. https://www.w3schools.com/graphics/canvas_intro.asp 
+* Mozilla Developer Network. (t.y.). JavaScript. MDN Web Docs. https://developer.mozilla.org/en-US/docs/Web/JavaScript 
+* Mozilla Developer Network. (t.y.). HTML. MDN Web Docs. https://developer.mozilla.org/en-US/docs/Web/HTML 
+Ses dosyaları için:
+** https://opengameart.org/content/sound-fx-0
+** https://pixabay.com/sound-effects/search/8%20bit%20walking/
+
+Die in the Dungeon (Referans alınan oyun)
+* https://alarts.itch.io/die-in-the-dungeon
