@@ -42,13 +42,20 @@ Karakter bu labirentte ilerlerken çeşitli tuzaklarla karşılaşır.
 * /assets/images/: Karakter sprite'ları ve çevre görselleri.
 
 * /assets/sounds/: Ses efektleri ve döngüsel müzikler.
+  
 ## Oynanış
+Oyuncumuz, karanlık labirentte hareket ettirilirken karşısına 4 çeşit engelden rastgele herhangi biri çıkabilir. Bu engeller; yağ, su,  petrol birikintilerinden biri veya onlardan daha güçlü bir engel olan gardiyan olabilir.
+Oyuncu bu tuzaklara sahip olan bloklara yanlışlıkla basarsa karşısına ‘Die in the Dungeon’ den referans alınan zar oyunu çıkar.
+Karakterin en başta sabit ve ‘10’ olan bu canına; yağ, su, petrol birikintilerinden birine basarsa ve zar oyununda kaybederse ‘-1’, gardiyanla karşılaşır ve zar oyununda kaybederse ‘-3’ puan yansır.
+
 * Karakter ok tuşlarıyla hareket eder.
 * Bir zindanın ortasında başlar ve labirentte engelleri aşarak çıkışa ulaşmaya çalışır.
 * Oyunu önden inceleyebilmek için "https://ismailemret.github.io/DungeonInferno/" sitesine gidebilirsiniz.
+  
 ### Ekibimiz
 * İsmail Emre Taşbilek
 * Merve Nur Sayın
+  
 ### Kaynakça
 Harita yapımında kullanılan görseller için:
 * Shutterstock. (t.y.). Pixelated wall stone illustrations. Shutterstock. https://www.shutterstock.com/tr/search/pixelated-wall-stone?image_type=illustration
