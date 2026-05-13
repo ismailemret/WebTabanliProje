@@ -1,9 +1,9 @@
 
 ## Oyun Ekran Görüntüleri
 
-| Labirent Üretimi ve Savaş Sisi | Zar Tabanlı Savaş Sistemi |
-|:---:|:---:|
-| <img height="300" src="https://github.com/user-attachments/assets/81e44155-3763-4ce3-a7e7-93a4820cdd32" /> | <img height="300" src="https://github.com/user-attachments/assets/48823592-21ca-461a-a1fd-5ce88928b9b0" /> | <img height="300" src="https://github.com/ismailemret/DungeonInferno/blob/main/assets/images/onyeni_karakter.png" 
+| Labirent Üretimi ve Savaş Sisi | Zar Tabanlı Savaş Sistemi | Oyun Karakteri |
+|:---:|:---:|:---:|
+| <img height="300" src="https://github.com/user-attachments/assets/81e44155-3763-4ce3-a7e7-93a4820cdd32" /> | <img height="300" src="https://github.com/user-attachments/assets/48823592-21ca-461a-a1fd-5ce88928b9b0" /> | <img height="300" src="https://github.com/ismailemret/DungeonInferno/blob/main/assets/images/onyeni_karakter.png"  />
 
 
 # ⛓️ Dungeon Inferno
