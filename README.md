@@ -1,7 +1,6 @@
 
 <img width="361" height="357" alt="maze" src="https://github.com/user-attachments/assets/81e44155-3763-4ce3-a7e7-93a4820cdd32" />
-<img width="807" height="360" alt="dice" src="https://github.com/user-attachments/assets/48823592-21ca-461a-a1fd-5ce88928b9b0" />
-
+<img width="650" height="357" alt="dice" src="https://github.com/user-attachments/assets/48823592-21ca-461a-a1fd-5ce88928b9b0" />
 
 # Dungeon Inferno
 Bu proje, HTML5 Canvas ve Vanilla JavaScript kullanılarak geliştirilmiş, prosedürel harita üretimi ve sıra tabanlı (turn-based) savaş mekaniklerine sahip bir 2D Dungeon Crawler oyunudur.
