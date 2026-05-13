@@ -15,11 +15,11 @@ Karakteri bloklar üzerinde, karanlık ve sadece kendi bulunduğu bloğun çevre
 Karakter bu labirentte ilerlerken çeşitli tuzaklarla karşılaşır.
 
 # Kullanılan Teknolojiler
-HTML5 Canvas
-CSS
-JavaScript
-Ses efektleri ve müzik yönetimi
-Sprite (Görsel dosya) tabanlı karakter sistemi
+*HTML5 Canvas
+*CSS
+*JavaScript
+*Ses efektleri ve müzik yönetimi
+*Sprite (Görsel dosya) tabanlı karakter sistemi
 
 ## Temel Özellikler
 * Prosedürel Zindan Üretimi: generateMap() fonksiyonu, her oyun başında benzersiz odalar ve koridorlar inşa eder.
