@@ -25,7 +25,9 @@ Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve
 * /assets/images/: Karakter sprite'ları ve çevre görselleri.
 
 * /assets/sounds/: Ses efektleri ve döngüsel müzikler.
-
+## Oynanış
+* Karakter ok tuşlarıyla hareket eder.
+* Bir zindanın ortasında başlar ve labirentte engelleri aşarak çıkışa ulaşmaya çalışır.
 ### Ekibimiz
 * İsmail Emre Taşbilek
 * Merve Nur Sayın
