@@ -214,9 +214,6 @@ function movePlayer(dx, dy) {
 function checkEnemy() {
     let ei = enemies.findIndex(e => e.x === player.x && e.y === player.y);
     if (ei !== -1) {
-        // Karşılaşma sesini çal
-        document.getElementById("soundEncounter").play(); 
-        
         inBattle = true;
         currentEnemy = { index: ei };
         document.getElementById("diceScreen").classList.remove("hidden");
@@ -231,9 +228,6 @@ function rollDice() {
     
     setTimeout(() => {
         if (p >= e) {
-            // Zafer sesini çal
-            document.getElementById("soundWin").play();
-            
             alert("Kazandın!");
             enemies.splice(currentEnemy.index, 1);
             inBattle = false;
