@@ -10,6 +10,12 @@
 Bu proje, HTML5 Canvas ve Vanilla JavaScript kullanılarak geliştirilmiş, prosedürel harita üretimi ve sıra tabanlı (turn-based) savaş mekaniklerine sahip bir 2D Dungeon Crawler oyunudur.
 Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve koordinat tabanlı çarpışma denetimi gibi temel oyun programlama konseptlerini uygulamak amacıyla geliştirilmiştir.
 
+##Oyun Amacı
+Karakteri bloklar üzerinde, karanlık ve sadece kendi bulunduğu bloğun çevresini görebileceği şekilde adım adım ilerletilerek labirent şeklindeki zindandan çıkarmak yani çıkış bloğuna varmak amaçlanır.
+Karakter bu labirentte ilerlerken çeşitli tuzaklarla karşılaşır.
+<img width="3347" height="144" alt="image" src="https://github.com/user-attachments/assets/67680f92-facd-412f-9224-ad6050b27892" />
+
+
 ## Temel Özellikler
 * Prosedürel Zindan Üretimi: generateMap() fonksiyonu, her oyun başında benzersiz odalar ve koridorlar inşa eder.
 
