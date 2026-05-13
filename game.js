@@ -67,8 +67,8 @@ function toggleMusic(play) {
     const music = document.getElementById("loopMusic"); // ID düzeltildi
     if (!music) return;
 
-    if (play) { 
-        music.volume =0.3; 
+    if (play) {
+        music.volume = 0.3; 
         music.loop = true; // Tarayıcı loop özelliğini zorla aç
         
         music.play().catch(err => {
@@ -190,8 +190,8 @@ function placeEnemies() {
         let isHorizontalCorridor = (map[room.y][room.x - 1] === 0 && map[room.y][room.x + 1] === 0);
         let isVerticalCorridor = (map[room.y - 1] && map[room.y - 1][room.x] === 0 && map[room.y + 1] && map[room.y + 1][room.x] === 0);
 
-               if (isHorizontalCorridor || isVerticalCorridor) {
-            if (Math.random() > 0.94) {
+        if (isHorizontalCorridor || isVerticalCorridor) {
+            if (Math.random() > 0.88) {
                 // Çıkışa olan mesafeyi hesapla (Manhattan Distance)
                 let distToExit = Math.abs(room.x - exitRoom.x) + Math.abs(room.y - exitRoom.y);
                 
@@ -219,7 +219,6 @@ function placeEnemies() {
         }
     });
 }
-
 // 3. Çizim Fonksiyonları
 function draw() {
     if (!ctx) return;
@@ -369,21 +368,12 @@ if (nx >= 0 && ny >= 0 && nx < mapWidth && ny < mapHeight && map[ny][nx] === 1) 
         checkEnemy();
 		checkPotion();
         
-        // Çıkış odasına ulaşıldı mı?
         if (exitRoom && player.x === exitRoom.x && player.y === exitRoom.y) {
-    inBattle = true; // Hareketi dondur
-    
-    // Zafer müziğini başlat
-    const victoryMusic = document.getElementById("soundVictoryLoop");
-    if (victoryMusic) {
-        victoryMusic.currentTime = 0;
-        victoryMusic.play();
-    }
-
-    // WinScreen'i göster
-    document.getElementById("winScreen").classList.remove("hidden");
-    draw();
-}
+            setTimeout(() => {
+                alert("TEBRİKLER! Zindandan kaçtınız.");
+                location.reload();
+            }, 100);
+        }
         draw();
     }
 }
@@ -393,38 +383,24 @@ function checkPotion() {
     let pIndex = potions.findIndex(p => p.x === player.x && p.y === player.y);
     
     if (pIndex !== -1) {
-        const potionSound = document.getElementById("soundPotion");
-        if (potionSound) {
-            potionSound.currentTime = 0; // Sesin her seferinde baştan çalması için
-            potionSound.play();
-        }
         // Mekanik: 2 Can Yenile (Max 10)
         player.hp = Math.min(10, player.hp + 2);
         
-        updateUI();
         // Arayüzü Güncelle
         const hpLabel = document.getElementById("hpValue");
         if (hpLabel) hpLabel.innerText = player.hp;
 
         // Efekt: Ses çal
-       /* const healSound = document.getElementById("soundHeal");
+        const healSound = document.getElementById("soundHeal");
         if (healSound) {
             healSound.currentTime = 0;
             healSound.play().catch(() => {});
-        }*/
+        }
         potions.splice(pIndex, 1);
         draw(); 
         console.log("İksir toplandı! Yeni HP: " + player.hp);
     }
 }
-
-function updateUI() {
-    const hpElement = document.getElementById("hpValue");
-
-    if (hpElement) hpElement.innerText = player.hp;
-    
-}
-
 function checkEnemy() {
     let ei = enemies.findIndex(e => e.x === player.x && e.y === player.y);
     if (ei === -1) return;
@@ -488,49 +464,27 @@ function rollDice() {
     const eDice = document.getElementById("enemyDice");
     const statusText = document.getElementById("battleStatus");
     const hpValue = document.getElementById("hpValue");
-    const shakingSound = document.getElementById("soundDiceShaking");
 
     if (!currentEnemy || inBattle === false) return;
-    rollBtn.disabled = true;
-
-    // --- 1. SESİ BAŞLAT ---
-    if (shakingSound) {
-        shakingSound.currentTime = 0; // Her atışta baştan başlasın
-        shakingSound.play();
-    }
     const enemyData = enemies[currentEnemy.index];
     
+    rollBtn.disabled = true;
     pDice.classList.add("shaking");
-    eDice.classList.add("shaking"); // Gardiyan gelirse her iki zar da sallansın
+    if (enemyData.type === 3) eDice.classList.add("shaking");
 
     setTimeout(() => {
-        // --- 2. SESİ DURDUR ---
-        if (shakingSound) {
-            shakingSound.pause(); // Sallanma bitince sesi kes
-        }
-
         pDice.classList.remove("shaking");
         eDice.classList.remove("shaking");
-        
-        // 1. Zarları At
-        const p = Math.ceil(Math.random() * 6);
-        let e; // Düşman zar değeri
 
-        if (enemyData.type === 3) {
-            // GARDİYAN: Karşılıklı zar atılır
-            e = Math.ceil(Math.random() * 6);
-        } else {
-            // TUZAKLAR: Sabit 3 hedefi
-            e = 3; 
-        }
+        const p = Math.ceil(Math.random() * 6);
+        let e = (enemyData.type === 3) ? Math.ceil(Math.random() * 6) : 0;
         
-        // 2. Görselleştir
         pDice.innerText = p;
-        eDice.innerText = e;
+        if (enemyData.type === 3) eDice.innerText = e;
 
         setTimeout(() => {
-            // 3. Karşılaştır (Hata buradaydı, targetValue zaten e'ye eşit)
-            let targetValue = e; 
+            const thresholds = [2, 5, 3];
+            let targetValue = (enemyData.type === 3) ? e : thresholds[enemyData.type];
 
             // EŞİTLİK
             if (p === targetValue) {
@@ -544,20 +498,12 @@ function rollDice() {
             let dmg = (enemyData.type === 3) ? 3 : 1;
 
             if (win) {
-                // BAŞARI DURUMU
-                const successSound = document.getElementById("soundSuccess");
-                if (successSound) {
-                    
-                    successSound.currentTime = 0;
-                    successSound.play();
-                }
-
                 if (enemyData.type === 3) {
-                    enemyData.hp--; 
+                    enemyData.hp--; // CAN AZALTMA BURADA
                     if (enemyData.hp > 0) {
                         statusText.innerText = `DARBE! Kalan Can: ${enemyData.hp}`;
                         statusText.style.color = "#00ffff";
-                        rollBtn.disabled = false; // Tekrar atmasına izin ver
+                        rollBtn.disabled = false;
                     } else {
                         statusText.innerText = "GARDİYAN DÜŞTÜ!";
                         statusText.style.color = "#00ff00";
@@ -568,44 +514,20 @@ function rollDice() {
                     statusText.style.color = "#00ff00";
                     setTimeout(closeBattle, 1000);
                 }
-                // Eski soundWin kontrolün (opsiyonel)
                 document.getElementById("soundWin")?.play();
-
             } else {
-                // HASAR ALMA DURUMU
+                // HASAR ALMA
                 player.hp -= dmg;
-                updateUI(); // Arayüzü güncelle
-                
                 if (hpValue) hpValue.innerText = player.hp;
                 statusText.innerText = `BAŞARISIZ! -${dmg} CAN`;
                 statusText.style.color = "#ff4444";
-
-                const damageSound = document.getElementById("soundDamage");
-                if (damageSound) {
-                    damageSound.currentTime = 0;
-                    damageSound.play();
-                }
+                document.getElementById("soundDamage")?.play();
 
                 if (player.hp <= 0) {
-                    inBattle = true; // Hareketi dondur
-                    document.getElementById("soundDiceShaking")?.pause();
-                    
-                    setTimeout(() => {
-                        // Zar ekranını gizle, kaybetme ekranını göster
-                        document.getElementById("diceScreen").classList.add("hidden");
-                        document.getElementById("loseScreen").classList.remove("hidden");
-    
-                        //yenilgi sesini çal
-                        document.getElementById("soundVictoryLoop")?.play();
-
-                        if (defeatMusic) {
-                        defeatMusic.currentTime = 0;
-                        defeatMusic.play();
-                        }
-                    }, 300);
-                    
+                    alert("Öldün...");
+                    location.reload();
                 } else {
-                    rollBtn.disabled = false; // Hayattaysa tekrar atabilsin
+                    rollBtn.disabled = false;
                 }
             }
         }, 500);

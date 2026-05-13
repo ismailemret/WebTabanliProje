@@ -88,24 +88,6 @@ canvas {
   100% { transform: translate(1px, 2px) rotate(1deg); }
 }
 
-#loseScreen {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #1a0000; /* Çok koyu kırmızı/siyah */
-  padding: 30px;
-  border: 3px solid #ff0000;
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
-  text-align: center;
-  z-index: 100;
-}
-
-#loseScreen h2 {
-  color: #ff4444;
-  margin-bottom: 15px;
-}
-
 button {
   padding: 10px 20px;
   font-size: 16px;
@@ -122,23 +104,7 @@ button {
 }
 
 
-#winScreen {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #222;
-  padding: 30px;
-  border: 3px solid gold; /* Kazanma ekranı olduğu için altın sarısı çerçeve */
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-  text-align: center;
-  z-index: 100;
-}
 
-#winScreen h2 {
-  color: gold;
-  margin-bottom: 15px;
-}
 
 
 
