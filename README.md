@@ -51,6 +51,12 @@ Karakterin en başta sabit ve ‘10’ olan bu canına; yağ, su, petrol birikin
 * Karakter ok tuşlarıyla hareket eder.
 * Bir zindanın ortasında başlar ve labirentte engelleri aşarak çıkışa ulaşmaya çalışır.
 * Oyunu önden inceleyebilmek için "https://ismailemret.github.io/DungeonInferno/" sitesine gidebilirsiniz.
+
+## Harita Oluşturma Algoritması
+* Backtracking benzeri labirent algoritması kullanıldı
+* 30x15 boyutunda harita oluşturuldu
+* Odalar rastgele üretildi
+* En uzak oda çıkış noktası olarak seçildi
   
 ### Ekibimiz
 * İsmail Emre Taşbilek
