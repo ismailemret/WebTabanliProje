@@ -12,7 +12,8 @@ Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve
 * Ses Entegrasyonu: Atmosferik fon müziği ve hareket/etkileşim anları için tetiklenen ses efektleri.
 
 ## Teknik Detaylar
-* Projenin mimarisi, modüler ve genişletilebilir bir yapıdadır:
+* Projenin mimarisi, modüler ve genişletilebilir bir yapıdadır.
+* 
 
 * Render Motoru: draw() fonksiyonu üzerinden Canvas API kullanılarak 60 FPS hedefli çizim döngüsü.
 
