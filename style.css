@@ -14,14 +14,33 @@ h1 {
   justify-content: center;
   margin-top: 20px;
 }
+#healthUI {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* İçeriği kutunun en soluna çiviler */
+    width: 490px;                /* Canvas ile tam aynı genişlik */
+    margin: 10px auto;           /* Canvas'ı ortalayan marginle aynı, sayfada ortalar */
+    padding: 0;
+}
 
+#heartIcon {
+    width: 30px;
+    height: 26px;
+    image-rendering: pixelated;
+    margin-right: 15px;          /* Kalp ile sayı arası boşluk */
+}
+
+#hpValue {
+    color: #ff4d4d;
+    /* Yüklediğimiz pikselli fontu buraya tanımlıyoruz */
+    font-family: 'Press Start 2P', cursive; 
+    font-size: 18px;             /* Bu font doğal olarak büyüktür, 18px idealdir */
+    line-height: 1;
+}
 canvas {
   background: #111;
   border: 3px solid #555;
   box-shadow: 0 0 20px black;
-  
-  image-rendering: pixelated;
-    image-rendering: crisp-edges;
 }
 
 /* Zar ekranı */
@@ -42,29 +61,6 @@ button {
   background: orange;
   border: none;
   cursor: pointer;
-}
-
-#statusBoard {
-  margin: 10px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-#hpBarContainer {
-  width: 200px;
-  height: 20px;
-  background-color: #444;
-  border: 2px solid #fff;
-  margin: 5px auto;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#hpBar {
-  width: 100%; /* Başlangıçta dolu */
-  height: 100%;
-  background-color: #ff4d4d;
-  transition: width 0.3s ease-in-out; /* Can azalırken akıcı görünmesi için */
 }
 
 button:hover {

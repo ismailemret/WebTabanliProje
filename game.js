@@ -1,10 +1,16 @@
-// 1. Temel Kurulum ve Global Değişkenler
+// 1. Temel Kurulum ve Tanımlamalar
 const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 const miniCanvas = document.getElementById("miniMap");
+const miniCtx = miniCanvas.getContext("2d");
 
-// Global tanımlıyoruz ki her fonksiyon erişebilsin
-let ctx, miniCtx;
 
+if (!canvas || !miniCanvas) {
+    console.error("HATA: Canvas elementleri bulunamadı! ID'leri kontrol edin.");
+} else {
+    const ctx = canvas.getContext("2d");
+    const miniCtx = miniCanvas.getContext("2d");
+    
 const mapSize = 7;
 const tileSize = 70;
 
@@ -15,27 +21,11 @@ let enemies = [];
 let inBattle = false;
 let currentEnemy = null;
 
-// Karakter Görselleri Nesnesi
-const images = {
-    down: new Image(),
-    up: new Image(),
-    left: new Image(),
-    right: new Image()
-};
-
-// Dosya yolları (Türkçe karakterlerden kaçınmak her zaman daha güvenlidir: sag, on vb.)
-images.down.src = 'onyeni_karakter.png';
-images.up.src = 'arka3_karakter.png';
-images.left.src = 'solyeni_karakter.png';
-images.right.src = 'sagyeni_karakter.png';
-
-// Tek bir Player nesnesi tanımlıyoruz
 const player = {
     x: 0,
     y: 0,
     hp: 10,
-    lightRadius: 150,
-    direction: 'down'
+    lightRadius: 120
 };
 
 // 2. Harita Oluşturma Mantığı
@@ -86,9 +76,10 @@ function findFarthestRoom(sx, sy) {
 function placeEnemies() {
     enemies = [];
     rooms.forEach(room => {
+        // Başlangıç ve bitiş odasına düşman koyma
         if ((room.x !== player.x || room.y !== player.y) && 
             (room.x !== exitRoom.x || room.y !== exitRoom.y)) {
-            if (Math.random() > 0.7) { 
+            if (Math.random() > 0.7) { // %30 ihtimalle düşman
                 enemies.push({ x: room.x, y: room.y });
             }
         }
@@ -97,11 +88,9 @@ function placeEnemies() {
 
 // 3. Çizim Fonksiyonları
 function draw() {
-    if (!ctx) return; // Hata önleyici
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Odaları çiz
+    // Haritayı çiz
     for (let y = 0; y < mapSize; y++) {
         for (let x = 0; x < mapSize; x++) {
             if (map[y][x] === 1) {
@@ -113,27 +102,14 @@ function draw() {
         }
     }
 
-    // Çıkış (Altın kapı gibi görünür)
+    // Çıkış ve Oyuncu
     if (exitRoom) {
         ctx.fillStyle = "gold";
         ctx.fillRect(exitRoom.x * tileSize + 20, exitRoom.y * tileSize + 20, tileSize - 40, tileSize - 40);
     }
-
-    // Karakter Çizimi
-    const currentImg = images[player.direction];
-    if (currentImg.complete && currentImg.naturalWidth !== 0) {
-        ctx.drawImage(
-            currentImg, 
-            player.x * tileSize + 5, 
-            player.y * tileSize + 5, 
-            tileSize - 10, 
-            tileSize - 10
-        );
-    } else {
-        // Resim yüklenmediyse geçici olarak yeşil kare çiz
-        ctx.fillStyle = "lime";
-        ctx.fillRect(player.x * tileSize + 15, player.y * tileSize + 15, tileSize - 30, tileSize - 30);
-    }
+    
+    ctx.fillStyle = "#4CAF50"; // Oyuncu rengi
+    ctx.fillRect(player.x * tileSize + 15, player.y * tileSize + 15, tileSize - 30, tileSize - 30);
 
     drawFog();
     drawMiniMap();
@@ -169,14 +145,13 @@ function drawFog() {
 }
 
 function drawMiniMap() {
-    if (!miniCtx) return;
     let s = 20;
     miniCtx.clearRect(0, 0, miniCanvas.width, miniCanvas.height);
     for (let y = 0; y < mapSize; y++) {
         for (let x = 0; x < mapSize; x++) {
             if (map[y][x] === 1) {
                 miniCtx.fillStyle = (x === player.x && y === player.y) ? "lime" : "#555";
-                if (exitRoom && x === exitRoom.x && y === exitRoom.y) miniCtx.fillStyle = "gold";
+                if (x === exitRoom.x && y === exitRoom.y) miniCtx.fillStyle = "gold";
                 miniCtx.fillRect(x * s, y * s, s - 2, s - 2);
             }
         }
@@ -186,26 +161,16 @@ function drawMiniMap() {
 // 4. Hareket ve Savaş Mantığı
 function movePlayer(dx, dy) {
     if (inBattle) return;
-
-    if (dx > 0) player.direction = 'right';
-    else if (dx < 0) player.direction = 'left';
-    else if (dy > 0) player.direction = 'down';
-    else if (dy < 0) player.direction = 'up';
-
     let nx = player.x + dx;
     let ny = player.y + dy;
 
     if (nx >= 0 && ny >= 0 && nx < mapSize && ny < mapSize && map[ny][nx] === 1) {
         player.x = nx;
         player.y = ny;
-        
         checkEnemy();
-        
-        if (exitRoom && player.x === exitRoom.x && player.y === exitRoom.y) {
-            setTimeout(() => {
-                alert("TEBRİKLER! Zindandan kaçtınız.");
-                location.reload();
-            }, 100);
+        if (player.x === exitRoom.x && player.y === exitRoom.y) {
+            alert("TEBRİKLER! Zindandan kaçtınız.");
+            location.reload();
         }
         draw();
     }
@@ -236,19 +201,7 @@ function rollDice() {
         } else {
             player.hp -= 2;
             alert("Hasar aldın! Kalan Can: " + player.hp);
-            document.getElementById("hpValue").innerText = player.hp;
-
-            const hpElement = document.getElementById("hpValue");
-            const hpBar = document.getElementById("hpBar");
-
-            if (hpElement) hpElement.innerText = player.hp; // Sayıyı günceller
-            
-            if (hpBar) {
-                let hpPercent = (player.hp / 10) * 100; // Can yüzdesini hesaplar
-                if (hpPercent < 0) hpPercent = 0;
-                hpBar.style.width = hpPercent + "%"; // Bar genişliğini günceller
-            }
-
+			document.getElementById("hpValue").innerText = player.hp;
             if (player.hp <= 0) {
                 alert("Öldün...");
                 location.reload();
@@ -257,24 +210,17 @@ function rollDice() {
     }, 500);
 }
 
-// 5. Başlatıcı ve Olay Dinleyiciler
+// Başlatıcı
 window.onload = () => {
-    // Canvas bağlantılarını burada kuruyoruz (null hatasını önler)
-    if (canvas && miniCanvas) {
-        ctx = canvas.getContext("2d");
-        miniCtx = miniCanvas.getContext("2d");
-        
-        generateMap();
-        draw();
-    } else {
-        console.error("Canvas elementleri bulunamadı!");
-    }
+    generateMap();
+    draw();
 };
 
 document.addEventListener("keydown", (e) => {
-    if (inBattle) return;
     if (e.key === "ArrowUp") movePlayer(0, -1);
     if (e.key === "ArrowDown") movePlayer(0, 1);
     if (e.key === "ArrowLeft") movePlayer(-1, 0);
     if (e.key === "ArrowRight") movePlayer(1, 0);
-});
+});}
+
+
