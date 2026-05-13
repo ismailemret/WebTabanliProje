@@ -26,3 +26,6 @@ Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve
 
 * /assets/sounds/: Ses efektleri ve döngüsel müzikler.
 
+### Ekibimiz
+İsmail Emre Taşbilek
+Merve Nur Sayın
