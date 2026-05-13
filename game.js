@@ -236,7 +236,6 @@ function placeEnemies() {
             });
         }
     });
-}
 
 // 3. Çizim Fonksiyonları
 function draw() {
