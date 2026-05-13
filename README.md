@@ -14,7 +14,7 @@ Proje; oyun döngüsü (game loop), rastgele zindan oluşturma algoritmaları ve
 Karakteri bloklar üzerinde, karanlık ve sadece kendi bulunduğu bloğun çevresini görebileceği şekilde adım adım ilerletilerek labirent şeklindeki zindandan çıkarmak yani çıkış bloğuna varmak amaçlanır.
 Karakter bu labirentte ilerlerken çeşitli tuzaklarla karşılaşır.
 
-# Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 * HTML5 Canvas
 * CSS
 * JavaScript
@@ -58,11 +58,11 @@ Karakterin en başta sabit ve ‘10’ olan bu canına; yağ, su, petrol birikin
 * Odalar rastgele üretildi
 * En uzak oda çıkış noktası olarak seçildi
   
-### Ekibimiz
+## Ekibimiz
 * İsmail Emre Taşbilek
 * Merve Nur Sayın
   
-### Kaynakça
+# Kaynakça
 Harita yapımında kullanılan görseller için:
 * Shutterstock. (t.y.). Pixelated wall stone illustrations. Shutterstock. https://www.shutterstock.com/tr/search/pixelated-wall-stone?image_type=illustration
 
