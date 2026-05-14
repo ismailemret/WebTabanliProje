@@ -590,9 +590,6 @@ function rollDice() {
                     statusText.style.color = "#00ff00";
                     setTimeout(closeBattle, 1000);
                 }
-                // Eski soundWin kontrolün (opsiyonel)
-                document.getElementById("soundWin")?.play();
-
             } else {
                 //Hasar alma durumu
                 player.hp -= dmg;
